@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace HotelGuestFrontendWin10App._03_Model
     {
         private static Singleton instance;
 
-        private Singleton() { }
+        
 
         public static Singleton Instance {
             get {
@@ -20,6 +21,13 @@ namespace HotelGuestFrontendWin10App._03_Model
                 }
                 return instance;
             }
+        }
+
+        public ObservableCollection<Guest> Guests { get; set; }
+
+        private Singleton()
+        {
+            Guests = new ObservableCollection<Guest>();
         }
 
     }
