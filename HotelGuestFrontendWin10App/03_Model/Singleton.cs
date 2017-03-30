@@ -23,11 +23,11 @@ namespace HotelGuestFrontendWin10App._03_Model
             }
         }
 
-        public ObservableCollection<Guest> Guests { get; set; }
+        public ObservableCollection<Guest> GuestsCollection { get; set; }
 
         private Singleton()
         {
-            Guests = new ObservableCollection<Guest>();
+            GuestsCollection = new ObservableCollection<Guest>();
         }
 
     }
