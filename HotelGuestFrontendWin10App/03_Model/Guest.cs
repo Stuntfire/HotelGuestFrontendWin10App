@@ -20,5 +20,10 @@ namespace HotelGuestFrontendWin10App._03_Model
             this.Name = name;
             this.Address = address;
         }
+
+        public override string ToString()
+        {
+            return $"Gæst nummer: {Guest_No}, Navn: {Name}, Adresse: {Address}";
+        }
     }
 }
