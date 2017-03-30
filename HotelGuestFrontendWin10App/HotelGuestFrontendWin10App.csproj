@@ -95,9 +95,7 @@
     <Compile Include="01_View\GuestView.xaml.cs">
       <DependentUpon>GuestView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="02_ViewModel\GuestViewModel.xaml.cs">
-      <DependentUpon>GuestViewModel.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="02_ViewModel\GuestViewModel.cs" />
     <Compile Include="03_Model\Guest.cs" />
     <Compile Include="03_Model\Singleton.cs" />
     <Compile Include="App.xaml.cs">
@@ -131,10 +129,6 @@
   <ItemGroup />
   <ItemGroup>
     <Page Include="01_View\GuestView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="02_ViewModel\GuestViewModel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
