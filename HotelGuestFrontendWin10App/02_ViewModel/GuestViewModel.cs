@@ -5,11 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HotelGuestFrontendWin10App._03_Model;
+using System.ComponentModel;
+using Windows.UI.Popups;
 
 namespace HotelGuestFrontendWin10App._02_ViewModel
 {
-    class GuestViewModel
+    public class GuestViewModel : INotifyPropertyChanged
     {
+        //public string MessageDialogSuccess()
+        //{
+        //    MessageDialog succes = new MessageDialog("Gæsterne blev hentet fra databasen via Hotel Guest Web Service.");
+        //    return succes.ShowAsync;
+        //}
         public int Guest_No { get; set; }
 
         public string Name { get; set; }
@@ -26,6 +33,14 @@ namespace HotelGuestFrontendWin10App._02_ViewModel
         public GuestViewModel()
         {
             GuestList = Singleton.Instance.GuestsCollection;
+            //MessageDialogSuccess();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
     }

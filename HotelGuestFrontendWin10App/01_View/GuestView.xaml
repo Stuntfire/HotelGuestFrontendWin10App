@@ -8,11 +8,11 @@
     x:Class="HotelGuestFrontendWin10App._01_View.GuestView"
     mc:Ignorable="d">
 
+    <Page.DataContext>
+        <_02_ViewModel:GuestViewModel/>
+    </Page.DataContext>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-        <Grid.DataContext>
-            <_02_ViewModel:GuestViewModel/>
-        </Grid.DataContext>
-
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="307" Margin="10,66,0,0" VerticalAlignment="Top" Width="412" ItemsSource="{Binding GuestList, Mode=TwoWay}"/>
     </Grid>
 </Page>

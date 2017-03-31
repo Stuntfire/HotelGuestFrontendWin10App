@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HotelGuestFrontendWin10App.Persistence;
 
 namespace HotelGuestFrontendWin10App._03_Model
 {
@@ -11,11 +12,10 @@ namespace HotelGuestFrontendWin10App._03_Model
     {
         private static Singleton instance;
 
-        
-
-        public static Singleton Instance {
+        public static Singleton Instance 
+            {
             get {
-                if (Instance == null)
+                if (instance == null)
                 {
                     instance = new Singleton();
                 }
@@ -28,6 +28,8 @@ namespace HotelGuestFrontendWin10App._03_Model
         private Singleton()
         {
             GuestsCollection = new ObservableCollection<Guest>();
+            GuestsCollection.Clear();
+            GuestsCollection = PersistenceService.GetAsyncGuests();
         }
 
     }
