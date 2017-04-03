@@ -35,7 +35,7 @@ namespace HotelGuestFrontendWin10App.Persistence
                 client.BaseAddress = new Uri(serverUrl);
                 client.DefaultRequestHeaders.Clear();
                 string urlStringGet = "api/Guests";
- 
+
                 try
                 {
                     HttpResponseMessage response = client.GetAsync(urlStringGet).Result;
@@ -56,6 +56,40 @@ namespace HotelGuestFrontendWin10App.Persistence
             }
         }
 
-        //Her 
+        public static PostAsyncGuest(Guest newGuest)
+        {
+            //Guest newGuest = new Guest(int guest_no, string name, string address);
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.BaseAddress = new Uri(serverUrl);
+                client.DefaultRequestHeaders.Clear();
+                string urlStringGet = "api/Guests";
+            }
+        }
     }
+    /*
+using (var client = new HttpClient())
+{
+  client.BaseAddress = new Uri(serverUrl);
+  client.DefaultRequestHeaders.Clear();
+try
+{
+  var response = client.PostAsJsonAsync<Hotel>("API/Hotels", MyNewHotel).Result;
+  if (response.IsSuccessStatusCode)
+ {
+  Console.WriteLine("Du har indsat et nyt hotel");
+  Console.WriteLine("Post Content: " + response.Content.ReadAsStringAsync());
+ }
+ else
+ {
+  Console.WriteLine("Fejl, hotellet blev ikke indsat");
+  Console.WriteLine("Statuskode : " + response.StatusCode);
+ }
+ }
+catch (Exception e)
+{
+Console.WriteLine("Der er sket en fejl : " + e.Message);
+}
+}*/
 }

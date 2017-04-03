@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HotelGuestFrontendWin10App.Persistence;
+using HotelGuestFrontendWin10App._03_Model;
 
 namespace HotelGuestFrontendWin10App._03_Model
 {
@@ -32,5 +33,15 @@ namespace HotelGuestFrontendWin10App._03_Model
             GuestsCollection = PersistenceService.GetAsyncGuests();
         }
 
+        public void PostGuest(Guest newGuest)
+        {
+            GuestsCollection.Add(newGuest);
+        }
+
+        public void PutGuest(int Guest_No, Guest guest)
+        {
+            GuestsCollection.Remove(GuestsCollection.FirstOrDefault(x => x.Guest_No == Guest_No));
+            GuestsCollection.Add(guest);
+        }
     }
 }
