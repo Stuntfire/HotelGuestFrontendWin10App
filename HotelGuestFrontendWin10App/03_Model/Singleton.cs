@@ -38,10 +38,16 @@ namespace HotelGuestFrontendWin10App._03_Model
             GuestsCollection.Add(newGuest);
         }
 
-        public void PutGuest(int Guest_No, Guest guest)
+        public void PutGuest(int guest_No, Guest guest)
         {
-            GuestsCollection.Remove(GuestsCollection.FirstOrDefault(x => x.Guest_No == Guest_No));
+            GuestsCollection.Remove(GuestsCollection.FirstOrDefault(x => x.Guest_No == guest_No));
             GuestsCollection.Add(guest);
+            GuestsCollection.Insert(guest_No, guest);
+        }
+
+        public Guest GetGuest(int guest_No)
+        {
+            return GuestsCollection.First(x => x.Guest_No == guest_No);
         }
     }
 }

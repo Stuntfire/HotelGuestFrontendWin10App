@@ -13,6 +13,27 @@
     </Page.DataContext>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="307" Margin="10,66,0,0" VerticalAlignment="Top" Width="412" ItemsSource="{Binding GuestList, Mode=TwoWay}"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="309" Margin="15,90,0,0" VerticalAlignment="Top" Width="539" ItemsSource="{Binding GuestList, Mode=TwoWay}"/>
+        <TextBlock x:Name="Guest_List" HorizontalAlignment="Left" Margin="25,26,0,0" TextWrapping="Wrap" Text="Guest List" VerticalAlignment="Top" FontSize="36"/>
+        <TextBlock x:Name="Create_Guest" HorizontalAlignment="Left" Margin="658,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36">
+            <Run Text="Create "/>
+            <Run Text="New "/>
+            <Run Text="Guest"/>
+        </TextBlock>
+        <TextBox x:Name="guestNo" HorizontalAlignment="Left" Margin="779,90,0,0" TextWrapping="Wrap" Text="{Binding Guest_No, Mode=TwoWay}" VerticalAlignment="Top" PlaceholderText="#" Width="30"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="658,94,0,0" TextWrapping="Wrap" Text="Guest Number:" VerticalAlignment="Top"/>
+        <TextBox x:Name="guestNo_Copy" HorizontalAlignment="Left" Margin="779,148,0,0" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay}" VerticalAlignment="Top" PlaceholderText="Name" Width="268"/>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="658,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top">
+            <Run Text="Guest "/>
+            <Run Text="Name"/>
+            <Run Text=":"/>
+        </TextBlock>
+        <TextBox x:Name="guestNo_Copy1" HorizontalAlignment="Left" Margin="779,208,0,0" TextWrapping="Wrap" Text="{Binding Address, Mode=TwoWay}" VerticalAlignment="Top" PlaceholderText="Address" Width="268"/>
+        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="658,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top">
+            <Run Text="Guest "/>
+            <Run Text="Address"/>
+            <Run Text=":"/>
+        </TextBlock>
+        <AppBarButton x:Name="Add_New_Guest" HorizontalAlignment="Left" Icon="Accept" Label="Add New Guest" Margin="986,268,0,0" VerticalAlignment="Top" Width="96"/>
     </Grid>
 </Page>

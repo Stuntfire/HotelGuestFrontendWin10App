@@ -38,11 +38,11 @@ namespace HotelGuestFrontendWin10App.Persistence
 
                 try
                 {
-                    HttpResponseMessage response = client.GetAsync(urlStringGet).Result;
+                    HttpResponseMessage getResponse = client.GetAsync(urlStringGet).Result;
 
-                    if (response.IsSuccessStatusCode)
+                    if (getResponse.IsSuccessStatusCode)
                     {
-                        TempGuestsCollection = response.Content.ReadAsAsync<ObservableCollection<Guest>>().Result;
+                        TempGuestsCollection = getResponse.Content.ReadAsAsync<ObservableCollection<Guest>>().Result;
                     }
                 }
                 catch (Exception e)
@@ -56,15 +56,30 @@ namespace HotelGuestFrontendWin10App.Persistence
             }
         }
 
-        public static PostAsyncGuest(Guest newGuest)
+        public void PostAsyncGuest(Guest newGuest)
         {
-            //Guest newGuest = new Guest(int guest_no, string name, string address);
+
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.BaseAddress = new Uri(serverUrl);
                 client.DefaultRequestHeaders.Clear();
-                string urlStringGet = "api/Guests";
+                string urlStringPost = "api/Guests";
+
+                try
+                {
+                    var postResponse = client.PostAsJsonAsync<Guest>(urlStringPost, newGuest).Result;
+
+                    if (postResponse.IsSuccessStatusCode)
+                    {
+                        Singleton.Instance.PostGuest(newGuest);
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             }
         }
     }
