@@ -8,7 +8,7 @@ using HotelGuestFrontendWin10App._03_Model;
 
 namespace HotelGuestFrontendWin10App.Handler
 {
-    class GuestHandler
+    public class GuestHandler
     {
         private GuestViewModel Gvm { get; set; }
 
@@ -24,6 +24,12 @@ namespace HotelGuestFrontendWin10App.Handler
             tempGuest.Name = Gvm.Name;
             tempGuest.Address = Gvm.Address;
             Singleton.Instance.PostGuest(tempGuest);
+        }
+
+        public void RemoveGuest()
+        {
+            Singleton.Instance.GuestsCollection.Remove(Gvm.SelectedGuest);
+            //Singleton.Instance.RemoveGuest(Gvm.SelectedGuest);
         }
     }
 }

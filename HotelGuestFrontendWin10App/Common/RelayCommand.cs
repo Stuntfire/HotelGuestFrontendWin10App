@@ -28,5 +28,6 @@ namespace HotelGuestFrontendWin10App.Common
 
         public event EventHandler CanExecuteChanged;
 
+
     }
 }

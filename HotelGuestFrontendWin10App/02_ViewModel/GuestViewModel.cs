@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using HotelGuestFrontendWin10App._03_Model;
 using System.ComponentModel;
 using Windows.UI.Popups;
+using System.Windows.Input;
+using HotelGuestFrontendWin10App.Common;
 
 namespace HotelGuestFrontendWin10App._02_ViewModel
 {
@@ -33,7 +35,23 @@ namespace HotelGuestFrontendWin10App._02_ViewModel
         public GuestViewModel()
         {
             GuestList = Singleton.Instance.GuestsCollection;
+            guestHandler = new Handler.GuestHandler(this);
+            CreateGuestCommand = new RelayCommand(guestHandler.CreateGuest);
+            RemoveGuestCommand = new RelayCommand(guestHandler.RemoveGuest);
             //MessageDialogSuccess();
+        }
+
+        public Handler.GuestHandler guestHandler { get; set; }
+
+        public ICommand CreateGuestCommand { get; set; }
+
+        public ICommand RemoveGuestCommand { get; set; }
+
+        private Guest _selectedGuest;
+
+        public Guest SelectedGuest {
+            get { return _selectedGuest; }
+            set { _selectedGuest = value; OnPropertyChanged(nameof(SelectedGuest)); }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
