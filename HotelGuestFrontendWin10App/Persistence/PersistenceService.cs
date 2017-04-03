@@ -50,6 +50,7 @@ namespace HotelGuestFrontendWin10App.Persistence
                     MessageDialog exception = new MessageDialog(e.Message);
                     return TempGuestsCollection = null;
                 }
+                /*Har prøvet at få en MessageDialog til at bekræfte at gæsterne er hentet fra databasen, men det lykkedes ikke.*/
                 //MessageDialog succes = new MessageDialog($"Gæsterne blev hentet fra databasen via {serverUrl} Hotel Guest Web Service.");
                 return TempGuestsCollection;
             }
