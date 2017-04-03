@@ -34,6 +34,6 @@
             <Run Text="Address"/>
             <Run Text=":"/>
         </TextBlock>
-        <AppBarButton x:Name="Add_New_Guest" HorizontalAlignment="Left" Icon="Accept" Label="Add New Guest" Margin="986,268,0,0" VerticalAlignment="Top" Width="96"/>
+        <AppBarButton x:Name="Add_New_Guest" HorizontalAlignment="Left" Icon="Contact" Label="Add New Guest" Margin="986,268,0,0" VerticalAlignment="Top" Width="96"/>
     </Grid>
 </Page>
