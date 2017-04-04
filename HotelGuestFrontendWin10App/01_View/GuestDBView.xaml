@@ -5,8 +5,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:_02_ViewModel="using:HotelGuestFrontendWin10App._02_ViewModel"
     x:Class="HotelGuestFrontendWin10App._01_View.GuestDBView"
     mc:Ignorable="d">
+
+    <Page.DataContext>
+        <_02_ViewModel:GuestViewModel/>
+    </Page.DataContext>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <AppBarButton x:Name="Back" Icon="Back" Label="Back" Margin="36,0,0,376" VerticalAlignment="Bottom">
@@ -16,6 +21,7 @@
                 </Core:EventTriggerBehavior>
             </Interactivity:Interaction.Behaviors>
         </AppBarButton>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="445" Margin="151,91,0,0" VerticalAlignment="Top" Width="526" ItemsSource="{Binding GuestListDBView, Mode=TwoWay}"/>
 
     </Grid>
 </Page>

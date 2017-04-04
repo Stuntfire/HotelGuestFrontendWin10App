@@ -73,6 +73,7 @@ namespace HotelGuestFrontendWin10App._02_ViewModel
             RemoveGuestCommand = new RelayCommand(guestHandler.RemoveGuestHandler, IfGuestListIsEmpty);
             PutGuestCommand = new RelayCommand(guestHandler.PutGuestHandler, null);
             guestListDBView = new ObservableCollection<GuestNameAndNoOfBookings>();
+            guestListDBView = Persistence.PersistenceService.GetTempGuestListDBView().Result;
             //MessageDialogSuccess();
         }
 

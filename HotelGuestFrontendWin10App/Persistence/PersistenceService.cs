@@ -112,5 +112,39 @@ namespace HotelGuestFrontendWin10App.Persistence
                 }
             }
         }
+
+        //Her henter (GetAsync) vi View'et GuestNameAndNoOfBookings i vores HotelDB på Azure,
+        //og deserialisere listen af gæster til C#-objekter (ReadAsAsync).
+        public static async Task<ObservableCollection<GuestNameAndNoOfBookings>> GetTempGuestListDBView()
+        {
+            ObservableCollection<GuestNameAndNoOfBookings> TempGuestListDBView = new ObservableCollection<GuestNameAndNoOfBookings>();
+
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.BaseAddress = new Uri(serverUrl);
+                client.DefaultRequestHeaders.Clear();
+                string urlStringGet = "api/GuestNameAndNoOfBookings/";
+
+                try
+                {
+                    //HttpResponseMessage getResponse = client.GetAsync(urlStringGet).Result;
+                    HttpResponseMessage getResponse = await client.GetAsync(urlStringGet);
+
+                    if (getResponse.IsSuccessStatusCode)
+                    {
+                        TempGuestListDBView = await getResponse.Content.ReadAsAsync<ObservableCollection<GuestNameAndNoOfBookings>>();
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageDialog exception = new MessageDialog(e.Message);
+                    return TempGuestListDBView = null;
+                }
+                /*Har prøvet at få en MessageDialog til at bekræfte at gæsterne er hentet fra databasen, men det lykkedes ikke.*/
+                //MessageDialog succes = new MessageDialog($"Gæsterne blev hentet fra databasen via {serverUrl} Hotel Guest Web Service.");
+                return TempGuestListDBView;
+            }
+        }
     }
 }
