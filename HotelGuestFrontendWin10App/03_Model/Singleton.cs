@@ -58,10 +58,10 @@ namespace HotelGuestFrontendWin10App._03_Model
         {
             //this.GuestsCollection = await PersistenceService.GetAsyncGuests();
 
+            // Kan ikke forstå at et kald 
             foreach (var item in await PersistenceService.GetAsyncGuests())
             {
                 this.GuestsCollection.Add(item);
-
             }
         }
 

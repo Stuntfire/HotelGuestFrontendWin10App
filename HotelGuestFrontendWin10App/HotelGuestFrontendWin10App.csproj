@@ -92,6 +92,9 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="01_View\GuestDBView.xaml.cs">
+      <DependentUpon>GuestDBView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="01_View\GuestView.xaml.cs">
       <DependentUpon>GuestView.xaml</DependentUpon>
     </Compile>
@@ -131,6 +134,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Page Include="01_View\GuestDBView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="01_View\GuestView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

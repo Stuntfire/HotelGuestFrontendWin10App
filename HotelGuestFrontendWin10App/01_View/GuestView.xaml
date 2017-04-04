@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:_02_ViewModel="using:HotelGuestFrontendWin10App._02_ViewModel"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     x:Class="HotelGuestFrontendWin10App._01_View.GuestView"
     mc:Ignorable="d">
 
@@ -55,5 +56,12 @@
             <Run Text=":"/>
         </TextBlock>
         <AppBarButton x:Name="Update_Guest" HorizontalAlignment="Left" Icon="AddFriend" Label="Update Guest" Margin="986,565,0,0" VerticalAlignment="Top" Width="96" Command="{Binding PutGuestCommand, Mode=TwoWay}"/>
+        <AppBarButton x:Name="Next" HorizontalAlignment="Right" Icon="Forward" Label="Forward" Margin="0,0,36,348" VerticalAlignment="Bottom">
+            <Interactivity:Interaction.Behaviors>
+                <Core:EventTriggerBehavior EventName="Click">
+                    <Core:NavigateToPageAction TargetPage="HotelGuestFrontendWin10App._01_View.GuestDBView"/>
+                </Core:EventTriggerBehavior>
+            </Interactivity:Interaction.Behaviors>
+        </AppBarButton>
     </Grid>
 </Page>

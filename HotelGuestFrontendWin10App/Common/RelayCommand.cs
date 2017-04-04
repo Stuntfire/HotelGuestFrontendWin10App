@@ -4,43 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.UI.Xaml;
 
 namespace HotelGuestFrontendWin10App.Common
 {
     public class RelayCommand : ICommand
     {
-        //private readonly Action execute;
-
-        //public RelayCommand(Action execute)
-        //{
-        //    this.execute = execute;
-        //}
-
-        //public bool CanExecute(object parameter)
-        //{
-        //    return true;
-        //}
-
-        //public void Execute(object parameter)
-        //{
-        //    this.execute();
-        //}
-
-        //public event EventHandler CanExecuteChanged;
-
         private Action methodToExecute = null;
         private Func<bool> methodToDetectCanExecute = null;
-        //private DispatcherTimer canExecuteChangedEventTimer = null;
+        private DispatcherTimer canExecuteChangedEventTimer = null;
 
         public RelayCommand(Action methodToExecute, Func<bool> methodToDetectCanExecute)
         {
             this.methodToExecute = methodToExecute;
             this.methodToDetectCanExecute = methodToDetectCanExecute;
 
-            //this.canExecuteChangedEventTimer = new DispatcherTimer();
-            //this.canExecuteChangedEventTimer.Tick += canExecuteChangedEventTimer_Tick;
-            //this.canExecuteChangedEventTimer.Interval = new TimeSpan(0, 0, 1);
-            //this.canExecuteChangedEventTimer.Start();
+            this.canExecuteChangedEventTimer = new DispatcherTimer();
+            this.canExecuteChangedEventTimer.Tick += canExecuteChangedEventTimer_Tick;
+            this.canExecuteChangedEventTimer.Interval = new TimeSpan(0, 0, 1);
+            this.canExecuteChangedEventTimer.Start();
         }
 
         public void Execute(object parameter)
