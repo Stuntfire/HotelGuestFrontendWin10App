@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HotelGuestFrontendWin10App._03_Model
 {
-    class GuestNameAndNoOfBookings
+    public class GuestNameAndNoOfBookings
     {
         public int Guest_No { get; set; }
 

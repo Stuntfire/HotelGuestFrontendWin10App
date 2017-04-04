@@ -37,9 +37,17 @@ namespace HotelGuestFrontendWin10App._02_ViewModel
 
         private ObservableCollection<Guest> guestList;
 
-        public ObservableCollection<Guest> GuestList {
-            get { return guestList; }
-            set { guestList = value; }
+        public ObservableCollection<Guest> GuestList 
+            {
+                get { return guestList; }
+                set { guestList = value; }
+            }
+
+        private ObservableCollection<GuestNameAndNoOfBookings> guestListDBView;
+
+        public ObservableCollection<GuestNameAndNoOfBookings> GuestListDBView {
+            get { return guestListDBView; }
+            set { guestListDBView = value; }
         }
 
         public Handler.GuestHandler guestHandler { get; set; }
@@ -64,6 +72,7 @@ namespace HotelGuestFrontendWin10App._02_ViewModel
             CreateGuestCommand = new RelayCommand(guestHandler.CreateGuestHandler, null);
             RemoveGuestCommand = new RelayCommand(guestHandler.RemoveGuestHandler, IfGuestListIsEmpty);
             PutGuestCommand = new RelayCommand(guestHandler.PutGuestHandler, null);
+            guestListDBView = new ObservableCollection<GuestNameAndNoOfBookings>();
             //MessageDialogSuccess();
         }
 
