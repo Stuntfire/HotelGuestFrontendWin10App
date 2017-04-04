@@ -38,10 +38,9 @@ namespace HotelGuestFrontendWin10App.Handler
             //Singleton.Instance.RemoveGuestHandler(Gvm.SelectedGuest.Guest_No);
         }
 
-        public void GetGuestHandler()
+        public async void GetGuestHandler()
         {
-            Singleton.Instance.GetGuestsAsync();
-           
+            await Singleton.Instance.GetGuestsAsync();
         }
     }
 }
