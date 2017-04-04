@@ -29,15 +29,18 @@ namespace HotelGuestFrontendWin10App._03_Model
         private Singleton()
         {
             GuestsCollection = new ObservableCollection<Guest>();
-            GuestsCollection.Clear();
-            GuestsCollection = PersistenceService.GetAsyncGuests();
+            //GuestsCollection.Clear();
+            //var liste = GuestsCollection = PersistenceService.GetAsyncGuests().Result;
+
+            GetGuestsAsync();
+            //GuestsCollection = PersistenceService.GetAsyncGuests();
         }
 
         /* Herunder laver vi 4 metoder der skal understøtte vores CRUD WebService:
          Create = PostGuest
          Read = GetGuest
          Update = PutGuest
-         Delete = RemoveGuest */
+         Delete = RemoveGuestHandler */
 
         // POST (Create) en ny Guest
         public void PostGuest(Guest newGuest)
@@ -51,6 +54,18 @@ namespace HotelGuestFrontendWin10App._03_Model
             return GuestsCollection.First(x => x.Guest_No == guest_No);
         }
 
+        public async Task GetGuestsAsync()
+        {
+            //this.GuestsCollection = await PersistenceService.GetAsyncGuests();
+
+            foreach (var item in await PersistenceService.GetAsyncGuests())
+            {
+                this.GuestsCollection.Add(item);
+
+            }
+        }
+
+
         //// GET specifik Guest via Guest_No
         //public static ObservableCollection<Guest> GetGuestsCollection()
         //{
@@ -62,7 +77,7 @@ namespace HotelGuestFrontendWin10App._03_Model
         {
             GuestsCollection.Remove(GuestsCollection.FirstOrDefault(x => x.Guest_No == guest_No));
             GuestsCollection.Add(guest); // er i tvivl om hvilken en af dem der er den rigtige metode at benytte...
-            GuestsCollection.Insert(guest_No, guest);
+            //GuestsCollection.Insert(guest_No, guest);
         }
 
         // REMOVE (Delete) en Guest

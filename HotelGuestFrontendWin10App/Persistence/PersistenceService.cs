@@ -20,12 +20,13 @@ namespace HotelGuestFrontendWin10App.Persistence
         //    //return succes;
         //}
 
-        const string serverUrl = "http://hotelguestwebservice20170329095006.azurewebsites.net";
+        const string serverUrl = "http://hotelguestwebservice20170329095006.azurewebsites.net/";
         //const string serverUrl = "http:// localhost:16908";
 
         //Her henter (GetAsync) vi gæsterne i Guest-tabellen der ligger i vores HotelDB på Azure,
         //og deserialisere listen af gæster til C#-objekter (ReadAsAsync).
-        public static ObservableCollection<Guest> GetAsyncGuests()
+        //public static ObservableCollection<Guest> GetAsyncGuests()
+        public static async Task<ObservableCollection<Guest>> GetAsyncGuests()
         {
             ObservableCollection<Guest> TempGuestsCollection = new ObservableCollection<Guest>();
 
@@ -34,15 +35,16 @@ namespace HotelGuestFrontendWin10App.Persistence
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.BaseAddress = new Uri(serverUrl);
                 client.DefaultRequestHeaders.Clear();
-                string urlStringGet = "api/Guests";
+                string urlStringGet = "api/Guests/";
 
                 try
                 {
-                    HttpResponseMessage getResponse = client.GetAsync(urlStringGet).Result;
+                    //HttpResponseMessage getResponse = client.GetAsync(urlStringGet).Result;
+                    HttpResponseMessage getResponse = await client.GetAsync(urlStringGet);
 
                     if (getResponse.IsSuccessStatusCode)
                     {
-                        TempGuestsCollection = getResponse.Content.ReadAsAsync<ObservableCollection<Guest>>().Result;
+                        TempGuestsCollection =await  getResponse.Content.ReadAsAsync<ObservableCollection<Guest>>();
                     }
                 }
                 catch (Exception e)
@@ -56,23 +58,51 @@ namespace HotelGuestFrontendWin10App.Persistence
             }
         }
 
+        //public async Task<ObservableCollection<Guest>> PostAsyncGuest(Guest newGuest);
         public void PostAsyncGuest(Guest newGuest)
         {
-
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.BaseAddress = new Uri(serverUrl);
                 client.DefaultRequestHeaders.Clear();
-                string urlStringPost = "api/Guests";
+                string urlStringPost = "api/Guests/";
 
                 try
                 {
+                    //var postResponse = await client.PostAsJsonAsync<Guest>(urlStringPost, newGuest);
                     var postResponse = client.PostAsJsonAsync<Guest>(urlStringPost, newGuest).Result;
 
                     if (postResponse.IsSuccessStatusCode)
                     {
-                        Singleton.Instance.PostGuest(newGuest);
+                        //Singleton.Instance.PostGuest(newGuest);
+                        Singleton.Instance.GuestsCollection.Add(newGuest);
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
+        public void PutAsyncGuest(int guest_No, Guest newGuest)
+        {
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.BaseAddress = new Uri(serverUrl);
+                client.DefaultRequestHeaders.Clear();
+                string urlStringPost = "api/Guests/{Guest_No}";
+
+                try
+                {
+                    var postResponse = client.PutAsJsonAsync<Guest>(urlStringPost, newGuest).Result;
+
+                    if (postResponse.IsSuccessStatusCode)
+                    {
+                        Singleton.Instance.GetGuest(guest_No);
+                        Singleton.Instance.PutGuest(guest_No, newGuest);
                     }
                 }
                 catch (Exception)
@@ -83,28 +113,4 @@ namespace HotelGuestFrontendWin10App.Persistence
             }
         }
     }
-    /*
-using (var client = new HttpClient())
-{
-  client.BaseAddress = new Uri(serverUrl);
-  client.DefaultRequestHeaders.Clear();
-try
-{
-  var response = client.PostAsJsonAsync<Hotel>("API/Hotels", MyNewHotel).Result;
-  if (response.IsSuccessStatusCode)
- {
-  Console.WriteLine("Du har indsat et nyt hotel");
-  Console.WriteLine("Post Content: " + response.Content.ReadAsStringAsync());
- }
- else
- {
-  Console.WriteLine("Fejl, hotellet blev ikke indsat");
-  Console.WriteLine("Statuskode : " + response.StatusCode);
- }
- }
-catch (Exception e)
-{
-Console.WriteLine("Der er sket en fejl : " + e.Message);
-}
-}*/
 }

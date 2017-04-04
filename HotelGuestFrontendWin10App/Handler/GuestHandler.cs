@@ -17,7 +17,7 @@ namespace HotelGuestFrontendWin10App.Handler
             this.Gvm = gvm;
         }
 
-        public void CreateGuest()
+        public void CreateGuestHandler()
         {
             Guest tempGuest = new Guest(Gvm.Guest_No, Gvm.Name, Gvm.Address);
             tempGuest.Guest_No = Gvm.Guest_No;
@@ -26,10 +26,22 @@ namespace HotelGuestFrontendWin10App.Handler
             Singleton.Instance.PostGuest(tempGuest);
         }
 
-        public void RemoveGuest()
+        public void PutGuestHandler()
+        {
+            Singleton.Instance.PutGuest(Gvm.Guest_No, Gvm.SelectedGuest);
+            //Singleton.Instance.GuestsCollection.Add(Gvm.SelectedGuest);
+        }
+
+        public void RemoveGuestHandler()
         {
             Singleton.Instance.GuestsCollection.Remove(Gvm.SelectedGuest);
-            //Singleton.Instance.RemoveGuest(Gvm.SelectedGuest);
+            //Singleton.Instance.RemoveGuestHandler(Gvm.SelectedGuest.Guest_No);
+        }
+
+        public void GetGuestHandler()
+        {
+            Singleton.Instance.GetGuestsAsync();
+           
         }
     }
 }

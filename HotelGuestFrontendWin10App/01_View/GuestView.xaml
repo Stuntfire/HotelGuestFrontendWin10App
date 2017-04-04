@@ -13,7 +13,7 @@
     </Page.DataContext>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="309" Margin="15,90,0,0" VerticalAlignment="Top" Width="539" ItemsSource="{Binding GuestList, Mode=TwoWay}"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="309" Margin="15,90,0,0" VerticalAlignment="Top" Width="539" ItemsSource="{Binding GuestList, Mode=TwoWay}" SelectedItem="{Binding SelectedGuest, Mode=TwoWay}"/>
         <TextBlock x:Name="Guest_List" HorizontalAlignment="Left" Margin="25,26,0,0" TextWrapping="Wrap" Text="Guest List" VerticalAlignment="Top" FontSize="36"/>
         <TextBlock x:Name="Create_Guest" HorizontalAlignment="Left" Margin="658,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36">
             <Run Text="Create "/>
@@ -34,6 +34,26 @@
             <Run Text="Address"/>
             <Run Text=":"/>
         </TextBlock>
-        <AppBarButton x:Name="Add_New_Guest" HorizontalAlignment="Left" Icon="Contact" Label="Add New Guest" Margin="986,268,0,0" VerticalAlignment="Top" Width="96"/>
+        <AppBarButton x:Name="Add_New_Guest" HorizontalAlignment="Left" Icon="Contact" Label="Add New Guest" Margin="986,244,0,0" VerticalAlignment="Top" Width="96" Command="{Binding CreateGuestCommand, Mode=TwoWay}"/>
+        <AppBarButton x:Name="Remove_Selected_Guest" HorizontalAlignment="Left" Icon="Delete" Label="Remove Selected Guest" Margin="274,541,0,0" VerticalAlignment="Top" Width="152" Command="{Binding RemoveGuestCommand, Mode=TwoWay}"/>
+        <TextBlock x:Name="Create_Guest_Copy" HorizontalAlignment="Left" Margin="658,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36">
+            <Run Text="Update Selected "/>
+            <Run Text="Guest"/>
+        </TextBlock>
+        <TextBox x:Name="guestNo_Copy2" HorizontalAlignment="Left" Margin="779,411,0,0" TextWrapping="Wrap" Text="{Binding SelectedGuest.Guest_No, Mode=TwoWay}" VerticalAlignment="Top" PlaceholderText="#" Width="30"/>
+        <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="658,415,0,0" TextWrapping="Wrap" Text="Guest Number:" VerticalAlignment="Top"/>
+        <TextBox x:Name="guestNo_Copy3" HorizontalAlignment="Left" Margin="779,469,0,0" TextWrapping="Wrap" Text="{Binding SelectedGuest.Name, Mode=TwoWay}" VerticalAlignment="Top" PlaceholderText="Name" Width="268"/>
+        <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="658,473,0,0" TextWrapping="Wrap" VerticalAlignment="Top">
+            <Run Text="Guest "/>
+            <Run Text="Name"/>
+            <Run Text=":"/>
+        </TextBlock>
+        <TextBox x:Name="guestNo_Copy4" HorizontalAlignment="Left" Margin="779,529,0,0" TextWrapping="Wrap" Text="{Binding SelectedGuest.Address, Mode=TwoWay}" VerticalAlignment="Top" PlaceholderText="Address" Width="268"/>
+        <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" Margin="658,533,0,0" TextWrapping="Wrap" VerticalAlignment="Top">
+            <Run Text="Guest "/>
+            <Run Text="Address"/>
+            <Run Text=":"/>
+        </TextBlock>
+        <AppBarButton x:Name="Update_Guest" HorizontalAlignment="Left" Icon="AddFriend" Label="Update Guest" Margin="986,565,0,0" VerticalAlignment="Top" Width="96" Command="{Binding PutGuestCommand, Mode=TwoWay}"/>
     </Grid>
 </Page>

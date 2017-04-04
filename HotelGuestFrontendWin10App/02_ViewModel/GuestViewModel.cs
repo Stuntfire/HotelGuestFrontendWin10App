@@ -14,6 +14,16 @@ namespace HotelGuestFrontendWin10App._02_ViewModel
 {
     public class GuestViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyname)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+            }
+        }
+
         //public string MessageDialogSuccess()
         //{
         //    MessageDialog succes = new MessageDialog("Gæsterne blev hentet fra databasen via Hotel Guest Web Service.");
@@ -32,20 +42,13 @@ namespace HotelGuestFrontendWin10App._02_ViewModel
             set { guestList = value; }
         }
 
-        public GuestViewModel()
-        {
-            GuestList = Singleton.Instance.GuestsCollection;
-            guestHandler = new Handler.GuestHandler(this);
-            CreateGuestCommand = new RelayCommand(guestHandler.CreateGuest);
-            RemoveGuestCommand = new RelayCommand(guestHandler.RemoveGuest);
-            //MessageDialogSuccess();
-        }
-
         public Handler.GuestHandler guestHandler { get; set; }
 
         public ICommand CreateGuestCommand { get; set; }
 
         public ICommand RemoveGuestCommand { get; set; }
+
+        public ICommand PutGuestCommand { get; set; }
 
         private Guest _selectedGuest;
 
@@ -54,11 +57,21 @@ namespace HotelGuestFrontendWin10App._02_ViewModel
             set { _selectedGuest = value; OnPropertyChanged(nameof(SelectedGuest)); }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName = null)
+        public GuestViewModel()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            GuestList = Singleton.Instance.GuestsCollection;
+            guestHandler = new Handler.GuestHandler(this);
+            CreateGuestCommand = new RelayCommand(guestHandler.CreateGuestHandler, null);
+            RemoveGuestCommand = new RelayCommand(guestHandler.RemoveGuestHandler, IfGuestListIsEmpty);
+            PutGuestCommand = new RelayCommand(guestHandler.PutGuestHandler, null);
+            //MessageDialogSuccess();
+        }
+
+        public bool IfGuestListIsEmpty()
+        {
+            if (GuestList.Count > 0)
+                return true;
+            return false;
         }
 
     }
