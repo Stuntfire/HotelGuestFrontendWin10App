@@ -8,10 +8,13 @@ namespace HotelGuestFrontendWin10App._03_Model
 {
     public class GuestNameAndNoOfBookings
     {
-        public int Guest_No { get; set; }
-
         public string Name { get; set; }
 
-        public string Address { get; set; }
+        public int? NoOfBookings { get; set; }
+
+        public override string ToString()
+        {
+            return $"{this.Name} har lavet {this.NoOfBookings} booking(s).";
+        }
     }
 }

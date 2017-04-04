@@ -25,8 +25,8 @@ namespace HotelGuestFrontendWin10App.Persistence
 
         //Her henter (GetAsync) vi gæsterne i Guest-tabellen der ligger i vores HotelDB på Azure,
         //og deserialisere listen af gæster til C#-objekter (ReadAsAsync).
-        //public static ObservableCollection<Guest> GetAsyncGuests()
-        public static async Task<ObservableCollection<Guest>> GetAsyncGuests()
+        //public static ObservableCollection<Guest> GetGuestsAsync()
+        public static async Task<ObservableCollection<Guest>> GetGuestsAsync()
         {
             ObservableCollection<Guest> TempGuestsCollection = new ObservableCollection<Guest>();
 
@@ -58,8 +58,8 @@ namespace HotelGuestFrontendWin10App.Persistence
             }
         }
 
-        //public async Task<ObservableCollection<Guest>> PostAsyncGuest(Guest newGuest);
-        public void PostAsyncGuest(Guest newGuest)
+        //public async Task<ObservableCollection<Guest>> PostGuestAsync(Guest newGuest);
+        public void PostGuestAsync(Guest newGuest)
         {
             using (var client = new HttpClient())
             {

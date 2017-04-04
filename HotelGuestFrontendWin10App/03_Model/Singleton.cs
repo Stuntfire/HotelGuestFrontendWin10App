@@ -30,10 +30,10 @@ namespace HotelGuestFrontendWin10App._03_Model
         {
             GuestsCollection = new ObservableCollection<Guest>();
             //GuestsCollection.Clear();
-            //var liste = GuestsCollection = PersistenceService.GetAsyncGuests().Result;
+            //var liste = GuestsCollection = PersistenceService.GetGuestsAsync().Result;
 
             GetGuestsAsync();
-            //GuestsCollection = PersistenceService.GetAsyncGuests();
+            //GuestsCollection = PersistenceService.GetGuestsAsync();
         }
 
         /* Herunder laver vi 4 metoder der skal understøtte vores CRUD WebService:
@@ -56,10 +56,10 @@ namespace HotelGuestFrontendWin10App._03_Model
 
         public async Task GetGuestsAsync()
         {
-            //this.GuestsCollection = await PersistenceService.GetAsyncGuests();
+            //this.GuestsCollection = await PersistenceService.GetGuestsAsync();
 
             // Kan ikke forstå at et kald 
-            foreach (var item in await PersistenceService.GetAsyncGuests())
+            foreach (var item in await PersistenceService.GetGuestsAsync())
             {
                 this.GuestsCollection.Add(item);
             }

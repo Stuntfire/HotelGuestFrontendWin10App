@@ -72,8 +72,8 @@ namespace HotelGuestFrontendWin10App._02_ViewModel
             CreateGuestCommand = new RelayCommand(guestHandler.CreateGuestHandler, null);
             RemoveGuestCommand = new RelayCommand(guestHandler.RemoveGuestHandler, IfGuestListIsEmpty);
             PutGuestCommand = new RelayCommand(guestHandler.PutGuestHandler, null);
-            guestListDBView = new ObservableCollection<GuestNameAndNoOfBookings>();
-            guestListDBView = Persistence.PersistenceService.GetTempGuestListDBView().Result;
+            GuestListDBView = new ObservableCollection<GuestNameAndNoOfBookings>();
+            GetGuestKistDBVIew();
             //MessageDialogSuccess();
         }
 
@@ -82,6 +82,16 @@ namespace HotelGuestFrontendWin10App._02_ViewModel
             if (GuestList.Count > 0)
                 return true;
             return false;
+        }
+
+        public async Task GetGuestKistDBVIew()
+        {
+            //guestListDBView = Persistence.PersistenceService.GetTempGuestListDBView().Result;
+
+            foreach (var item in await Persistence.PersistenceService.GetTempGuestListDBView())
+            {
+                this.GuestListDBView.Add(item);
+            }
         }
 
     }
