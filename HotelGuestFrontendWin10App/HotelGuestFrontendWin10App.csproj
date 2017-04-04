@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="02_ViewModel\GuestViewModel.cs" />
     <Compile Include="03_Model\Guest.cs" />
+    <Compile Include="03_Model\GuestNameAndNoOfBookings.cs" />
     <Compile Include="03_Model\Singleton.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
