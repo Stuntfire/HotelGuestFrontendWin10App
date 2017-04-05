@@ -26,6 +26,8 @@ namespace HotelGuestFrontendWin10App._03_Model
 
         public ObservableCollection<Guest> GuestsCollection { get; set; }
 
+
+        // SINGLETON CONSTRUCTOR
         private Singleton()
         {
             GuestsCollection = new ObservableCollection<Guest>();
@@ -34,6 +36,8 @@ namespace HotelGuestFrontendWin10App._03_Model
 
             GetGuestsAsync();
             //GuestsCollection = PersistenceService.GetGuestsAsync();
+
+            //PostGuest(newGuest);
         }
 
         /* Herunder laver vi 4 metoder der skal understøtte vores CRUD WebService:
@@ -42,18 +46,15 @@ namespace HotelGuestFrontendWin10App._03_Model
          Update = PutGuest
          Delete = RemoveGuestHandler */
 
-        // POST (Create) en ny Guest
+        // Create/POST en ny Guest
         public void PostGuest(Guest newGuest)
         {
+            PersistenceService.PostGuestAsync(newGuest);
             GuestsCollection.Add(newGuest);
         }
 
-        // GET (Read) specifik Guest via Guest_No
-        public Guest GetGuest(int guest_No)
-        {
-            return GuestsCollection.First(x => x.Guest_No == guest_No);
-        }
 
+        // Read/GET listen af Guests
         public async Task GetGuestsAsync()
         {
             //this.GuestsCollection = await PersistenceService.GetGuestsAsync();
@@ -64,7 +65,10 @@ namespace HotelGuestFrontendWin10App._03_Model
                 this.GuestsCollection.Add(item);
             }
         }
-
+        //public Guest GetGuest(int guest_No)
+        //{
+        //    return GuestsCollection.First(x => x.Guest_No == guest_No);
+        //}
 
         //// GET specifik Guest via Guest_No
         //public static ObservableCollection<Guest> GetGuestsCollection()
@@ -72,7 +76,7 @@ namespace HotelGuestFrontendWin10App._03_Model
         //    return GuestsCollection;
         //}
 
-        // PUT (update) en ny Guest
+        // Update/PUT en Guest
         public void PutGuest(int guest_No, Guest guest)
         {
             GuestsCollection.Remove(GuestsCollection.FirstOrDefault(x => x.Guest_No == guest_No));
@@ -80,7 +84,7 @@ namespace HotelGuestFrontendWin10App._03_Model
             //GuestsCollection.Insert(guest_No, guest);
         }
 
-        // REMOVE (Delete) en Guest
+        // Delete/REMOVE en Guest
         public void RemoveGuest(int guest_No)
         {
             GuestsCollection.Remove(GuestsCollection.FirstOrDefault(x => x.Guest_No == guest_No));

@@ -94,5 +94,13 @@ namespace HotelGuestFrontendWin10App._02_ViewModel
             }
         }
 
+        //public void ReturnGuestList()
+        //{
+        //    foreach (var item in GuestList)
+        //    {
+        //        Singleton.Instance.GuestsCollection.Add(item);
+        //    }
+        //}
+
     }
 }
