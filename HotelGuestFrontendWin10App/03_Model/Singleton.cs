@@ -59,7 +59,7 @@ namespace HotelGuestFrontendWin10App._03_Model
         {
             //this.GuestsCollection = await PersistenceService.GetGuestsAsync();
 
-            // Kan ikke forstå at et kald 
+            // Kan ikke forstå hvorfor et response skal foreach'es?
             foreach (var item in await PersistenceService.GetGuestsAsync())
             {
                 this.GuestsCollection.Add(item);
@@ -77,17 +77,21 @@ namespace HotelGuestFrontendWin10App._03_Model
         //}
 
         // Update/PUT en Guest
-        public void PutGuest(int guest_No, Guest guest)
+        public void PutGuest(int guest_No, Guest newGuest)
         {
-            GuestsCollection.Remove(GuestsCollection.FirstOrDefault(x => x.Guest_No == guest_No));
-            GuestsCollection.Add(guest); // er i tvivl om hvilken en af dem der er den rigtige metode at benytte...
+            PersistenceService.PutAsyncGuest(guest_No, newGuest);
+            //GuestsCollection.Remove(GuestsCollection.FirstOrDefault(x => x.Guest_No == guest_No));
+            //GuestsCollection.Add(newGuest); // er i tvivl om hvilken en af dem der er den rigtige metode at benytte...
             //GuestsCollection.Insert(guest_No, guest);
+            GuestsCollection.Clear();
+            GetGuestsAsync();
         }
 
         // Delete/REMOVE en Guest
-        public void RemoveGuest(int guest_No)
-        {
-            GuestsCollection.Remove(GuestsCollection.FirstOrDefault(x => x.Guest_No == guest_No));
-        }
+        //public void RemoveGuest(int guest_No)
+        //{
+        //    PersistenceService.
+        //    GuestsCollection.Remove(GuestsCollection.FirstOrDefault(x => x.Guest_No == guest_No));
+        //}
     }
 }

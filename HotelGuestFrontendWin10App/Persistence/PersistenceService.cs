@@ -25,6 +25,7 @@ namespace HotelGuestFrontendWin10App.Persistence
 
         //Her henter (GetAsync) vi gæsterne i Guest-tabellen der ligger i vores HotelDB på Azure,
         //og deserialisere listen af gæster til C#-objekter (ReadAsAsync).
+
         //public static ObservableCollection<Guest> GetGuestsAsync()
         public static async Task<ObservableCollection<Guest>> GetGuestsAsync()
         {
@@ -87,23 +88,23 @@ namespace HotelGuestFrontendWin10App.Persistence
             }
         }
 
-        public void PutAsyncGuest(int guest_No, Guest newGuest)
+        public static void PutAsyncGuest(int guest_No, Guest newGuest)
         {
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.BaseAddress = new Uri(serverUrl);
                 client.DefaultRequestHeaders.Clear();
-                string urlStringPost = "api/Guests/{Guest_No}";
+                string urlStringPut = $"api/Guests/{newGuest.Guest_No}";
 
                 try
                 {
-                    var postResponse = client.PutAsJsonAsync<Guest>(urlStringPost, newGuest).Result;
+                    var postResponse = client.PutAsJsonAsync<Guest>(urlStringPut, newGuest).Result;
 
                     if (postResponse.IsSuccessStatusCode)
                     {
-                        Singleton.Instance.GetGuest(guest_No);
-                        Singleton.Instance.PutGuest(guest_No, newGuest);
+                        //Singleton.Instance.GetGuest(guest_No);
+                        //Singleton.Instance.PutGuest(guest_No, newGuest);
                     }
                 }
                 catch (Exception)
