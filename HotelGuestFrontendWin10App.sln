@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelGuestFrontendWin10App", "HotelGuestFrontendWin10App\HotelGuestFrontendWin10App.csproj", "{819660DA-38A1-44B3-8BE6-5412FF931D97}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestGuest", "UnitTestGuest\UnitTestGuest.csproj", "{E32CEB8D-19FA-4264-95EB-EDB97692C5C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -33,6 +35,24 @@ Global
 		{819660DA-38A1-44B3-8BE6-5412FF931D97}.Release|x86.ActiveCfg = Release|x86
 		{819660DA-38A1-44B3-8BE6-5412FF931D97}.Release|x86.Build.0 = Release|x86
 		{819660DA-38A1-44B3-8BE6-5412FF931D97}.Release|x86.Deploy.0 = Release|x86
+		{E32CEB8D-19FA-4264-95EB-EDB97692C5C5}.Debug|ARM.ActiveCfg = Debug|ARM
+		{E32CEB8D-19FA-4264-95EB-EDB97692C5C5}.Debug|ARM.Build.0 = Debug|ARM
+		{E32CEB8D-19FA-4264-95EB-EDB97692C5C5}.Debug|ARM.Deploy.0 = Debug|ARM
+		{E32CEB8D-19FA-4264-95EB-EDB97692C5C5}.Debug|x64.ActiveCfg = Debug|x64
+		{E32CEB8D-19FA-4264-95EB-EDB97692C5C5}.Debug|x64.Build.0 = Debug|x64
+		{E32CEB8D-19FA-4264-95EB-EDB97692C5C5}.Debug|x64.Deploy.0 = Debug|x64
+		{E32CEB8D-19FA-4264-95EB-EDB97692C5C5}.Debug|x86.ActiveCfg = Debug|x86
+		{E32CEB8D-19FA-4264-95EB-EDB97692C5C5}.Debug|x86.Build.0 = Debug|x86
+		{E32CEB8D-19FA-4264-95EB-EDB97692C5C5}.Debug|x86.Deploy.0 = Debug|x86
+		{E32CEB8D-19FA-4264-95EB-EDB97692C5C5}.Release|ARM.ActiveCfg = Release|ARM
+		{E32CEB8D-19FA-4264-95EB-EDB97692C5C5}.Release|ARM.Build.0 = Release|ARM
+		{E32CEB8D-19FA-4264-95EB-EDB97692C5C5}.Release|ARM.Deploy.0 = Release|ARM
+		{E32CEB8D-19FA-4264-95EB-EDB97692C5C5}.Release|x64.ActiveCfg = Release|x64
+		{E32CEB8D-19FA-4264-95EB-EDB97692C5C5}.Release|x64.Build.0 = Release|x64
+		{E32CEB8D-19FA-4264-95EB-EDB97692C5C5}.Release|x64.Deploy.0 = Release|x64
+		{E32CEB8D-19FA-4264-95EB-EDB97692C5C5}.Release|x86.ActiveCfg = Release|x86
+		{E32CEB8D-19FA-4264-95EB-EDB97692C5C5}.Release|x86.Build.0 = Release|x86
+		{E32CEB8D-19FA-4264-95EB-EDB97692C5C5}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

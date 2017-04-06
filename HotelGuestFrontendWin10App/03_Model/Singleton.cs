@@ -31,13 +31,8 @@ namespace HotelGuestFrontendWin10App._03_Model
         private Singleton()
         {
             GuestsCollection = new ObservableCollection<Guest>();
-            //GuestsCollection.Clear();
-            //var liste = GuestsCollection = PersistenceService.GetGuestsAsync().Result;
 
             GetGuestsAsync();
-            //GuestsCollection = PersistenceService.GetGuestsAsync();
-
-            //PostGuest(newGuest);
         }
 
         /* Herunder laver vi 4 metoder der skal understøtte vores CRUD WebService:
@@ -80,18 +75,18 @@ namespace HotelGuestFrontendWin10App._03_Model
         public void PutGuest(int guest_No, Guest newGuest)
         {
             PersistenceService.PutAsyncGuest(guest_No, newGuest);
-            //GuestsCollection.Remove(GuestsCollection.FirstOrDefault(x => x.Guest_No == guest_No));
-            //GuestsCollection.Add(newGuest); // er i tvivl om hvilken en af dem der er den rigtige metode at benytte...
-            //GuestsCollection.Insert(guest_No, guest);
             GuestsCollection.Clear();
             GetGuestsAsync();
         }
 
         // Delete/REMOVE en Guest
-        //public void RemoveGuest(int guest_No)
-        //{
-        //    PersistenceService.
-        //    GuestsCollection.Remove(GuestsCollection.FirstOrDefault(x => x.Guest_No == guest_No));
-        //}
+        public void RemoveGuest(/*int Guest_No,*/ Guest deleteGuest)
+        {
+            if (deleteGuest != null)
+            {
+                GuestsCollection.Remove(deleteGuest);
+                PersistenceService.DeleteAsyncGuest(/*Guest_No,*/ deleteGuest);
+            }
+        }
     }
 }

@@ -23,13 +23,14 @@ namespace HotelGuestFrontendWin10App.Persistence
         const string serverUrl = "http://hotelguestwebservice20170329095006.azurewebsites.net/";
         //const string serverUrl = "http:// localhost:16908";
 
+
+        //GET ---- READ
         //Her henter (GetAsync) vi gæsterne i Guest-tabellen der ligger i vores HotelDB på Azure,
         //og deserialisere listen af gæster til C#-objekter (ReadAsAsync).
 
         //public static ObservableCollection<Guest> GetGuestsAsync()
         public static async Task<ObservableCollection<Guest>> GetGuestsAsync()
         {
-            ObservableCollection<Guest> TempGuestsCollection = new ObservableCollection<Guest>();
 
             using (var client = new HttpClient())
             {
@@ -40,24 +41,31 @@ namespace HotelGuestFrontendWin10App.Persistence
 
                 try
                 {
-                    //HttpResponseMessage getResponse = client.GetAsync(urlStringGet).Result;
                     HttpResponseMessage getResponse = await client.GetAsync(urlStringGet);
 
                     if (getResponse.IsSuccessStatusCode)
                     {
-                        TempGuestsCollection = await getResponse.Content.ReadAsAsync<ObservableCollection<Guest>>();
+                        var TempGuestsCollection = await getResponse.Content.ReadAsAsync<ObservableCollection<Guest>>();
+                        return TempGuestsCollection;
+
+                        //Besked om succes 
+                        MessageDialog guestsLoad = new MessageDialog("The Hotel Guests has been loaded");
+                        //guestsLoad.Commands.Add(new UICommand { Label = "Ok" });
+                        guestsLoad.ShowAsync();
                     }
                 }
                 catch (Exception e)
                 {
                     MessageDialog exception = new MessageDialog(e.Message);
-                    return TempGuestsCollection = null;
                 }
                 /*Har prøvet at få en MessageDialog til at bekræfte at gæsterne er hentet fra databasen, men det lykkedes ikke.*/
                 //MessageDialog succes = new MessageDialog($"Gæsterne blev hentet fra databasen via {serverUrl} Hotel Guest Web Service.");
-                return TempGuestsCollection;
+                return null;
             }
         }
+
+
+        //POST ---- CREATE
 
         //public async Task<ObservableCollection<Guest>> PostGuestAsync(Guest newGuest);
         public static void PostGuestAsync(Guest newGuest)
@@ -77,8 +85,10 @@ namespace HotelGuestFrontendWin10App.Persistence
 
                     if (postResponse.IsSuccessStatusCode)
                     {
-                        //Singleton.Instance.PostGuest(newGuest);
-                        //Singleton.Instance.GuestsCollection.Add(newGuest);
+                        //Besked om POST Success 
+                        MessageDialog postGuest = new MessageDialog("New Guests Created");
+                        //guestsLoad.Commands.Add(new UICommand { Label = "Ok" });
+                        postGuest.ShowAsync();
                     }
                 }
                 catch (Exception)
@@ -87,6 +97,9 @@ namespace HotelGuestFrontendWin10App.Persistence
                 }
             }
         }
+
+
+        //PUT ---- UPDATE
 
         public static void PutAsyncGuest(int guest_No, Guest newGuest)
         {
@@ -99,9 +112,9 @@ namespace HotelGuestFrontendWin10App.Persistence
 
                 try
                 {
-                    var postResponse = client.PutAsJsonAsync<Guest>(urlStringPut, newGuest).Result;
+                    var putResponse = client.PutAsJsonAsync<Guest>(urlStringPut, newGuest).Result;
 
-                    if (postResponse.IsSuccessStatusCode)
+                    if (putResponse.IsSuccessStatusCode)
                     {
                         //Singleton.Instance.GetGuest(guest_No);
                         //Singleton.Instance.PutGuest(guest_No, newGuest);
@@ -114,6 +127,39 @@ namespace HotelGuestFrontendWin10App.Persistence
                 }
             }
         }
+
+
+        //REMOVE ---- DELETE
+        public static void DeleteAsyncGuest(/*int Guest_No,*/ Guest deleteGuest)
+        {
+            using (var client = new HttpClient())
+            {
+                //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.BaseAddress = new Uri(serverUrl);
+                client.DefaultRequestHeaders.Clear();
+                string urlStringDelete = $"api/Guests/{deleteGuest.Guest_No}";
+                //string urlStringDelete = "api/Guests/" + deleteGuest.Guest_No.ToString();
+
+                try
+                {
+                    var deleteResponse = client.DeleteAsync(urlStringDelete).Result;
+
+                    if (deleteResponse.IsSuccessStatusCode)
+                    {
+                        //Singleton.Instance.GetGuest(guest_No);
+                        //Singleton.Instance.PutGuest(guest_No, newGuest);
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+        }
+
+
+        //Database view baseret på Guest
 
         //Her henter (GetAsync) vi View'et GuestNameAndNoOfBookings i vores HotelDB på Azure,
         //og deserialisere listen af gæster til C#-objekter (ReadAsAsync).

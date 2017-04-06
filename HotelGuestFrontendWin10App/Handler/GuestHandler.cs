@@ -29,13 +29,11 @@ namespace HotelGuestFrontendWin10App.Handler
         public void PutGuestHandler()
         {
             Singleton.Instance.PutGuest(Gvm.Guest_No, Gvm.SelectedGuest);
-            //Singleton.Instance.GuestsCollection.Add(Gvm.SelectedGuest);
         }
 
         public void RemoveGuestHandler()
         {
-            Singleton.Instance.GuestsCollection.Remove(Gvm.SelectedGuest);
-            //Singleton.Instance.RemoveGuestHandler(Gvm.SelectedGuest.Guest_No);
+            Singleton.Instance.RemoveGuest(Gvm.SelectedGuest);
         }
 
         public async void GetGuestHandler()
