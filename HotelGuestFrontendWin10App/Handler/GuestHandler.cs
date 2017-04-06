@@ -40,5 +40,7 @@ namespace HotelGuestFrontendWin10App.Handler
         {
             await Singleton.Instance.GetGuestsAsync();
         }
+
+
     }
 }

@@ -31,5 +31,6 @@ namespace UnitTestGuest
             //Forventer en Success, da der er 34 gæster på listen pt.
             Assert.AreEqual(34, testCollection.Count);
         }
+
     }
 }
