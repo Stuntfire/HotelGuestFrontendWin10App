@@ -91,6 +91,7 @@
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="ClassDiagram1.cd" />
     <None Include="project.json" />
+    <None Include="SystemArchitectureDiagram\Hoteldatabase frontend, Søren.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="01_View\GuestDBView.xaml.cs">
@@ -126,6 +127,7 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="SystemArchitectureDiagram\SystemArchitectureDiagram.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -133,9 +135,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SystemArchitectureDiagram\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Include="01_View\GuestDBView.xaml">
       <SubType>Designer</SubType>
