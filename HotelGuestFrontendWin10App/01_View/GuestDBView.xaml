@@ -14,14 +14,15 @@
     </Page.DataContext>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <AppBarButton x:Name="Back" Icon="Back" Label="Back" Margin="36,0,0,376" VerticalAlignment="Bottom">
+        <AppBarButton x:Name="Back" Icon="Back" Label="Back" Margin="1142,0,0,600" VerticalAlignment="Bottom">
             <Interactivity:Interaction.Behaviors>
                 <Core:EventTriggerBehavior EventName="Click">
                     <Core:NavigateToPageAction TargetPage="HotelGuestFrontendWin10App._01_View.GuestView"/>
                 </Core:EventTriggerBehavior>
             </Interactivity:Interaction.Behaviors>
         </AppBarButton>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="445" Margin="151,91,0,0" VerticalAlignment="Top" Width="526" ItemsSource="{Binding GuestListDBView, Mode=TwoWay}"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="445" Margin="151,91,0,0" VerticalAlignment="Top" Width="317" ItemsSource="{Binding GuestListDBView, Mode=TwoWay}"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Guest and numbers of Bookings" VerticalAlignment="Top" FontSize="36" Margin="161,30,0,0"/>
 
     </Grid>
 </Page>

@@ -56,7 +56,7 @@
             <Run Text=":"/>
         </TextBlock>
         <AppBarButton x:Name="Update_Guest" HorizontalAlignment="Left" Icon="AddFriend" Label="Update Guest" Margin="986,565,0,0" VerticalAlignment="Top" Width="96" Command="{Binding PutGuestCommand, Mode=TwoWay}"/>
-        <AppBarButton x:Name="Next" HorizontalAlignment="Right" Icon="Forward" Label="Forward" Margin="0,0,36,348" VerticalAlignment="Bottom">
+        <AppBarButton x:Name="Next" HorizontalAlignment="Right" Icon="Forward" Label="Forward" Margin="0,0,50,600" VerticalAlignment="Bottom">
             <Interactivity:Interaction.Behaviors>
                 <Core:EventTriggerBehavior EventName="Click">
                     <Core:NavigateToPageAction TargetPage="HotelGuestFrontendWin10App._01_View.GuestDBView"/>
