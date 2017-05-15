@@ -45,13 +45,14 @@ namespace HotelGuestFrontendWin10App.Persistence
 
                     if (getResponse.IsSuccessStatusCode)
                     {
+
                         var TempGuestsCollection = await getResponse.Content.ReadAsAsync<ObservableCollection<Guest>>();
                         return TempGuestsCollection;
 
                         //Besked om succes 
                         MessageDialog guestsLoad = new MessageDialog("The Hotel Guests has been loaded");
                         //guestsLoad.Commands.Add(new UICommand { Label = "Ok" });
-                        guestsLoad.ShowAsync();
+                        await guestsLoad.ShowAsync().AsTask();
                     }
                 }
                 catch (Exception e)
@@ -88,7 +89,7 @@ namespace HotelGuestFrontendWin10App.Persistence
                         //Besked om POST Success 
                         MessageDialog postGuest = new MessageDialog("New Guests Created");
                         //guestsLoad.Commands.Add(new UICommand { Label = "Ok" });
-                        postGuest.ShowAsync();
+                        postGuest.ShowAsync().AsTask();
                     }
                 }
                 catch (Exception)

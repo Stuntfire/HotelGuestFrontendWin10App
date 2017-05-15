@@ -60,10 +60,10 @@ namespace HotelGuestFrontendWin10App._03_Model
                 this.GuestsCollection.Add(item);
             }
         }
-        //public Guest GetGuest(int guest_No)
-        //{
-        //    return GuestsCollection.First(x => x.Guest_No == guest_No);
-        //}
+        public Guest GetGuest(int guest_No)
+        {
+            return GuestsCollection.First(x => x.Guest_No == guest_No);
+        }
 
         //// GET specifik Guest via Guest_No
         //public static ObservableCollection<Guest> GetGuestsCollection()

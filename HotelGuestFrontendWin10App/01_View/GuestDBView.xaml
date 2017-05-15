@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:_02_ViewModel="using:HotelGuestFrontendWin10App._02_ViewModel"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     x:Class="HotelGuestFrontendWin10App._01_View.GuestDBView"
     mc:Ignorable="d">
 
@@ -23,6 +24,8 @@
         </AppBarButton>
         <ListView x:Name="listView" HorizontalAlignment="Left" Height="445" Margin="151,91,0,0" VerticalAlignment="Top" Width="317" ItemsSource="{Binding GuestListDBView, Mode=TwoWay}"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Guest and numbers of Bookings" VerticalAlignment="Top" FontSize="36" Margin="161,30,0,0"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="644,98,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding GuestListDBView}"/>
+        <Popup/>
 
     </Grid>
 </Page>
